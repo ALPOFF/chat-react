@@ -1,0 +1,32 @@
+.chatWindowWrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  border-radius: 8px;
+  width: 300px;
+  height: 500px;
+  background-color: white;
+
+  input {
+    flex: 1;
+    height: 30px;
+     overflow: auto;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+.inputWrapper {
+  margin: 8px 8px 8px 50px;
+  display: flex;
+}
+
+.inputBodyWrapper {
+  border-top: 1px solid grey;
+  margin-top: auto;
+}
+

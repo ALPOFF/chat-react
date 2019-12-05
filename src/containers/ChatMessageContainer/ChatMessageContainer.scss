@@ -1,0 +1,13 @@
+.messageWrapper {
+  display: flex;
+  flex-direction: column;
+  img {
+    height: 35px;
+    padding: 5px;
+  }
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+}
