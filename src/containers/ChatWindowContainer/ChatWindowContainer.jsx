@@ -21,7 +21,7 @@ const ChatWindowContainer = (props) => {
         <div className='chatWindowWrapper'>
             {props.msg.map(m =>
             <ChatMessageContainer userIcon={m.userIcon} userName={m.userName} msgData={m.msgData} data={m.data} />
-            )}
+            )} 
             <div className='inputBodyWrapper'>
                 <div className='inputWrapper'>
                     <input type="text"/>
