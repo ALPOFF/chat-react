@@ -17,11 +17,19 @@ const ChatWindowContainer = (props) => {
         document.title = `${messageCount} new messages have been emitted`;
     }, [messageCount]); //only re-run the effect if new message comes in
 
+    const handleNewMessage = () => {
+        console.log('emitting new message');
+        socket.emit('new message', {
+            room: 'test-room'
+        });
+        setMessageCount(messageCount + 1);
+    }
+
     return (
         <div className='chatWindowWrapper'>
             {props.msg.map(m =>
             <ChatMessageContainer userIcon={m.userIcon} userName={m.userName} msgData={m.msgData} data={m.data} />
-            )} 
+            )}
             <div className='inputBodyWrapper'>
                 <div className='inputWrapper'>
                     <input type="text"/>
