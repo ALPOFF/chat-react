@@ -36,19 +36,20 @@ const ChatWindowContainer = (props) => {
 
     return (
         <div className='chatWindowWrapper'>
-
+            <div className="messagesWrapper">
                 {props.msg.map(m =>
                     (m.userName === props.activeUser)
                         ? <div className="messageWrapperL">
                             <ChatMessageContainer userIcon={m.userIcon} userName={m.userName} msgData={m.msgData}
                                                   data={m.data}/>
-                    </div>
+                        </div>
 
-                        : <div className="messageWrapperR"><ChatMessageContainer  userIcon={m.userIcon} userName={m.userName} msgData={m.msgData}
+                        : <div className="messageWrapperR"><ChatMessageContainer userIcon={m.userIcon}
+                                                                                 userName={m.userName}
+                                                                                 msgData={m.msgData}
                                                                                  data={m.data}/></div>
                 )}
-
-
+            </div>
             <div className='inputBodyWrapper'>
                 <button onClick={sendMsg}>
                     <img src={clipIcon} alt=""/>
