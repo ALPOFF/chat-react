@@ -1,6 +1,12 @@
-const port = 3011;
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+const express = require('express')
+const port = 4001;
+const http = require('http')
+var app = express();
+const socketIO = require('socket.io')
+
+
+const server = http.createServer(app)
+const io = socketIO(server)
 
 io.on('connection', socket => {
     console.log('a user connected');

@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react';
 import './ChatWindowContainer.scss'
 import ChatMessageContainer from "../ChatMessageContainer/ChatMessageContainer";
 import {connect} from "react-redux";
+import clipIcon from './../../assets/images/clip_icon.png';
+import planeIcon from './../../assets/images/plane_icon.png';
 
 const io = require('socket.io-client');
-const socket = io('http://localhost:3011');
+const socket = io('http://localhost:4001');
 
 const ChatWindowContainer = (props) => {
 
@@ -23,7 +25,11 @@ const ChatWindowContainer = (props) => {
             room: 'test-room'
         });
         setMessageCount(messageCount + 1);
-    }
+    };
+
+    const sendMsg = () => {
+
+    };
 
     return (
         <div className='chatWindowWrapper'>
@@ -31,9 +37,15 @@ const ChatWindowContainer = (props) => {
             <ChatMessageContainer userIcon={m.userIcon} userName={m.userName} msgData={m.msgData} data={m.data} />
             )}
             <div className='inputBodyWrapper'>
+                <button onClick={handleNewMessage}>
+                    <img src={clipIcon} alt=""/>
+                </button>
                 <div className='inputWrapper'>
                     <input type="text"/>
                 </div>
+                <button>
+                    <img src={planeIcon} alt=""/>
+                </button>
             </div>
         </div>
     )
