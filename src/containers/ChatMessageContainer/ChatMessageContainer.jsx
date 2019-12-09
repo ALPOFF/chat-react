@@ -4,7 +4,7 @@ import userIcon from './../../assets/images/user_icon.png'
 
 const ChatMessageContainer = (props) => {
     return (
-        <div className='messageWrapper'>
+        <>
             <div className='userInfo'>
                 {props.userIcon !== null ?
                     <img src={props.userIcon} alt="userIcon"/>
@@ -17,7 +17,7 @@ const ChatMessageContainer = (props) => {
             <div>
                 {props.msgData}
             </div>
-        </div>
+        </>
     )
 };
 

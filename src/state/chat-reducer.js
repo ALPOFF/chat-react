@@ -5,7 +5,8 @@ let initialState = {
         {id: 0, userIcon: null, userName: 'Ilyas', msgData: 'Hello!', data: '17:45'},
         {id: 1, userIcon: null, userName: 'Puh', msgData: 'Hi', data: '18:00'}
     ],
-    test: '4'
+    test: '4',
+    activeUser: 'Ilyas'
 };
 
 const chatReducer = (state = initialState, action) => {
@@ -13,7 +14,7 @@ const chatReducer = (state = initialState, action) => {
         case SET_TEST:
             return {
                 ...state,
-                msg: [ ...state.msg, {id: 0, userIcon: null, userName: "Ilyas", msgData: action.inputData, data: new Date().getHours() + ':' + new Date().getMinutes()}]
+                msg: [ ...state.msg, {id: 0, userIcon: null, userName: 'Ilyas', msgData: action.inputData, data: new Date().getHours() + ':' + new Date().getMinutes()}]
             };
         default:
             return state
