@@ -1,0 +1,39 @@
+.appWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+}
+
+.chatWrapper {
+  display: flex;
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+
+.sidebar {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  background-color: #162B58;
+  border-radius: 6px 0 0 6px;
+
+  input {
+      height: 25px;
+      overflow: auto;
+      border-radius: 3px;
+      margin: 10px;
+      border: 1px solid lightgrey;
+      outline: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+

@@ -4,6 +4,9 @@ import ChatMessageContainer from "../ChatMessageContainer/ChatMessageContainer";
 import {connect} from "react-redux";
 import clipIcon from './../../assets/images/clip_icon.png';
 import planeIcon from './../../assets/images/plane_icon.png';
+import InputReduxForm from "../../ReduxForm/InputReduxForm/InputReduxForm";
+import {setTest} from "../../state/chat-reducer";
+import handleSubmit from "redux-form/lib/handleSubmit";
 
 const io = require('socket.io-client');
 const socket = io('http://localhost:4001');
@@ -27,8 +30,8 @@ const ChatWindowContainer = (props) => {
         setMessageCount(messageCount + 1);
     };
 
-    const sendMsg = () => {
-
+    const sendMsg = (formData) => {
+        props.setTest(formData.inputData)
     };
 
     return (
@@ -37,11 +40,11 @@ const ChatWindowContainer = (props) => {
             <ChatMessageContainer userIcon={m.userIcon} userName={m.userName} msgData={m.msgData} data={m.data} />
             )}
             <div className='inputBodyWrapper'>
-                <button onClick={handleNewMessage}>
+                <button onClick={sendMsg}>
                     <img src={clipIcon} alt=""/>
                 </button>
                 <div className='inputWrapper'>
-                    <input type="text"/>
+                    <InputReduxForm onSubmit={sendMsg}/>
                 </div>
                 <button>
                     <img src={planeIcon} alt=""/>
@@ -52,7 +55,8 @@ const ChatWindowContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    msg: state.chatReducer.msg
+    msg: state.chatReducer.msg,
+    test: state.chatReducer.test
 });
 
-export default connect(mapStateToProps, {}) (ChatWindowContainer);
+export default connect(mapStateToProps, {setTest}) (ChatWindowContainer);
