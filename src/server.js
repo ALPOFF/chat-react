@@ -1,12 +1,12 @@
-const express = require('express')
+const express = require('express');
 const port = 4001;
-const http = require('http')
-var app = express();
-const socketIO = require('socket.io')
+const http = require('http');
+const app = express();
+const socketIO = require('socket.io');
 
 
-const server = http.createServer(app)
-const io = socketIO(server)
+const server = http.createServer(app);
+const io = socketIO(server);
 
 io.on('connection', socket => {
     console.log('a user connected');
@@ -27,8 +27,15 @@ io.on('connection', socket => {
         socket.leave(data.room)
     });
 
-    socket.on('new message', data => {
+    /*socket.on('new message', data => {
         console.log(data.room);
+        socket.broadcast
+            .to(data.room)
+            .emit('receive message', data)
+    });*/
+
+    socket.on('new message', data => {
+        console.log(data.newMsgData);
         socket.broadcast
             .to(data.room)
             .emit('receive message', data)

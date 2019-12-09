@@ -31,7 +31,11 @@ const ChatWindowContainer = (props) => {
     };
 
     const sendMsg = (formData) => {
-        props.setTest(formData.inputData)
+        console.log('emitting new message');
+        props.setTest(formData.inputData);
+        socket.emit('new message', {
+            newMsgData: formData.inputData
+        });
     };
 
     return (
