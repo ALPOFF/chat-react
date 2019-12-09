@@ -3,7 +3,7 @@ import {Field, reduxForm} from "redux-form";
 
 const InputForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
-            <Field className={"input"} name={"inputData"} component={"input"}/>
+            <Field className={"input"} name={"inputData"} component={"input"} placeholder={"Write a message ..."}/>
     </form>
 };
 
