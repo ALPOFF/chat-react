@@ -1,1 +1,13 @@
+.dialogs {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+  .dialogItem {
+    height: 55px;
+    color: white;
+    font-weight: bolder;
+  }
+}
+
 

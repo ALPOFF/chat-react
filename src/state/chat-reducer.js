@@ -6,7 +6,14 @@ let initialState = {
         {id: 1, userIcon: null, userName: 'Puh', msgData: 'Hi', data: '18:00'}
     ],
     test: '4',
-    activeUser: 'Ilyas'
+    activeUser: 'Ilyas',
+    dialogs: [
+        {id: 0, userName: '0'},
+        {id: 1, userName: '1'},
+        {id: 2, userName: '2'},
+        {id: 3, userName: '3'},
+        {id: 4, userName: '4'}
+    ]
 };
 
 const chatReducer = (state = initialState, action) => {

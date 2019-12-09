@@ -1,12 +1,24 @@
 import React from "react";
 import './SidebarContainer.scss'
+import {connect} from "react-redux";
 
 const SidebarContainer = (props) => {
     return (
-        <div>
+        <>
             <input type="text" placeholder="Search ..."/>
-        </div>
+            <div className="dialogs">
+                {props.dialogs.map(d => <div className="dialogItem">
+                    {d.userName}
+
+                </div>)}
+            </div>
+        </>
     )
 };
 
-export default SidebarContainer;
+const mapStateToProps = (state) => ({
+    msg: state.chatReducer.msg,
+    dialogs: state.chatReducer.dialogs
+});
+
+export default connect(mapStateToProps, {})(SidebarContainer);
