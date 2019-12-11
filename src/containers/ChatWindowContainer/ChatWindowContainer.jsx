@@ -9,11 +9,12 @@ import {setTest} from "../../state/chat-reducer";
 import handleSubmit from "redux-form/lib/handleSubmit";
 
 const io = require('socket.io-client');
-const socket = io('http://localhost:4001');
+const socket = io('http://localhost:3000');
 
 const ChatWindowContainer = (props) => {
 
     const [messageCount, setMessageCount] = useState(0);
+    const [inRoom, setInRoom] = useState(false);
 
     useEffect(() => {
         socket.on('receive message', payload => {

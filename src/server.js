@@ -1,5 +1,5 @@
 const express = require('express');
-const port = 4001;
+const port = 3000;
 const http = require('http');
 const app = express();
 const socketIO = require('socket.io');
