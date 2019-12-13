@@ -1,4 +1,6 @@
 const SET_TEST = 'SET_TEST';
+const UPDATE_NEW_SEARCH_VALUE = 'UPDATE_NEW_SEARCH_VALUE';
+const GET_NEW_SEARCH_VAL = 'GET_NEW_PIC_ARR';
 
 let initialState = {
     msg: [
@@ -13,7 +15,9 @@ let initialState = {
         {id: 2, userName: 'User 3', msgData: 'fdsfsd'},
         {id: 3, userName: 'User 4', msgData: 'Hsdfsdsdfsdi'},
         {id: 4, userName: 'User 5', msgData: 'Hssssi'}
-    ]
+    ],
+    new_search_value: '',
+    searchResult: []
 };
 
 const chatReducer = (state = initialState, action) => {
@@ -22,6 +26,16 @@ const chatReducer = (state = initialState, action) => {
             return {
                 ...state,
                 msg: [ ...state.msg, {id: 0, userIcon: null, userName: 'Ilyas', msgData: action.inputData, data: new Date().getHours() + ':' + new Date().getMinutes()}]
+            };
+        case UPDATE_NEW_SEARCH_VALUE:
+            return {
+                ...state,
+                new_search_value: action.NewSearchValue,
+            };
+        case GET_NEW_SEARCH_VAL:
+            return {
+                ...state,
+                searchResult: state.dialogs.filter(u => u.userName === state.new_search_value)
             };
         default:
             return state
@@ -32,6 +46,19 @@ export const setTest = (inputData) => {
     return {
         type: SET_TEST,
         inputData
+    }
+};
+
+export const update_new_pic_value = (NewSearchValue) => {
+    return {
+        type: UPDATE_NEW_SEARCH_VALUE,
+        NewSearchValue: NewSearchValue
+    }
+};
+
+export const getNewPicArr = () => {
+    return {
+        type: GET_NEW_SEARCH_VAL
     }
 };
 

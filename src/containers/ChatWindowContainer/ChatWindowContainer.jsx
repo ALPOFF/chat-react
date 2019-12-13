@@ -4,7 +4,7 @@ import ChatMessageContainer from "../ChatMessageContainer/ChatMessageContainer";
 import {connect} from "react-redux";
 import clipIcon from './../../assets/images/clip_icon.png';
 import planeIcon from './../../assets/images/plane_icon.png';
-import InputReduxForm from "../../ReduxForm/InputReduxForm/InputReduxForm";
+import InputMsgReduxForm from "../../ReduxForm/InputMsgReduxForm/InputMsgReduxForm";
 import {setTest} from "../../state/chat-reducer";
 import handleSubmit from "redux-form/lib/handleSubmit";
 
@@ -23,11 +23,8 @@ const ChatWindowContainer = (props) => {
         document.title = `${messageCount} new messages have been emitted`;
     }, [messageCount]); //only re-run the effect if new message comes in
 
-    const handleNewMessage = () => {
-        socket.emit('new message', {
-            room: 'test-room'
-        });
-        setMessageCount(messageCount + 1);
+    const attachFile = () => {
+        console.log('attach file')
     };
 
     const sendMsg = (formData) => {
@@ -59,7 +56,7 @@ const ChatWindowContainer = (props) => {
                     <img src={clipIcon} alt=""/>
                 </button>
                 <div className='inputWrapper'>
-                    <InputReduxForm onSubmit={sendMsg}/>
+                    <InputMsgReduxForm onSubmit={sendMsg}/>
                 </div>
                 <button className="inputBtn">
                     <img src={planeIcon} alt=""/>
