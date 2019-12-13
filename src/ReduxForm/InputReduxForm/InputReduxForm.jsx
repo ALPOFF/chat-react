@@ -5,7 +5,7 @@ const afterSubmit = (result, dispatch) =>
     dispatch(reset('input'));
 
 const InputForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
+    return <form style={{width: '100%'}} onSubmit={props.handleSubmit}>
             <Field className={"input"} name={"inputData"} component={"input"} placeholder={"Write a message ..."}/>
     </form>
 };

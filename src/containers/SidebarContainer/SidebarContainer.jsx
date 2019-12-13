@@ -9,7 +9,9 @@ const SidebarContainer = (props) => {
             <div className="dialogs">
                 {props.dialogs.map(d => <div className="dialogItem">
                     {d.userName}
-
+                    <br />
+                    {d.msgData}
+                    <br/>
                 </div>)}
             </div>
         </>

@@ -24,7 +24,6 @@ const ChatWindowContainer = (props) => {
     }, [messageCount]); //only re-run the effect if new message comes in
 
     const handleNewMessage = () => {
-        console.log('emitting new message');
         socket.emit('new message', {
             room: 'test-room'
         });
@@ -56,13 +55,13 @@ const ChatWindowContainer = (props) => {
                 )}
             </div>
             <div className='inputBodyWrapper'>
-                <button onClick={sendMsg}>
+                <button>
                     <img src={clipIcon} alt=""/>
                 </button>
                 <div className='inputWrapper'>
                     <InputReduxForm onSubmit={sendMsg}/>
                 </div>
-                <button>
+                <button className="inputBtn">
                     <img src={planeIcon} alt=""/>
                 </button>
             </div>
