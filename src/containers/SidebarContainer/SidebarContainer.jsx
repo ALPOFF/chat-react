@@ -1,7 +1,8 @@
 import React from "react";
 import './SidebarContainer.scss'
 import {connect} from "react-redux";
-import {getNewPicArr, update_new_pic_value} from "../../state/chat-reducer";
+import {clearSearch, getNewPicArr, update_new_pic_value} from "../../state/chat-reducer";
+import clearSearch_icon from './../../assets/images/clearSearch_icon.png'
 
 const SidebarContainer = (props) => {
 
@@ -11,9 +12,19 @@ const SidebarContainer = (props) => {
         props.getNewPicArr()
     };
 
+    const clearInputSearch = () => {
+        props.clearSearch()
+    };
+
     return (
         <>
-            <input value={props.new_search_value} onChange={onNewSearchValue} placeholder="Search ..." type="text"/>
+            <div className="search">
+                <input value={props.new_search_value} onChange={onNewSearchValue} placeholder="Search ..." type="text"/>
+                {props.new_search_value !== '' && <button className="clearSearch" onClick={clearInputSearch}>
+                    <img src={clearSearch_icon} alt="" height={20}/>
+                </button>
+                }
+            </div>
             {props.new_search_value !== ''
                 ? <div>{props.searchResult.map(u => <div className="dialogItem">
                     {u.userName}
@@ -40,4 +51,4 @@ const mapStateToProps = (state) => ({
     searchResult: state.chatReducer.searchResult
 });
 
-export default connect(mapStateToProps, {update_new_pic_value, getNewPicArr})(SidebarContainer);
+export default connect(mapStateToProps, {update_new_pic_value, getNewPicArr, clearSearch})(SidebarContainer);
