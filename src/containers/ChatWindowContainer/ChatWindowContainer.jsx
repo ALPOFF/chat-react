@@ -3,10 +3,10 @@ import './ChatWindowContainer.scss'
 import ChatMessageContainer from "../ChatMessageContainer/ChatMessageContainer";
 import {connect} from "react-redux";
 import clipIcon from './../../assets/images/clip_icon.png';
-import planeIcon from './../../assets/images/plane_icon.png';
 import InputMsgReduxForm from "../../ReduxForm/InputMsgReduxForm/InputMsgReduxForm";
 import {setTest} from "../../state/chat-reducer";
 import handleSubmit from "redux-form/lib/handleSubmit";
+import {reset} from "redux-form";
 
 const io = require('socket.io-client');
 const socket = io('http://localhost:3000');
@@ -29,6 +29,13 @@ const ChatWindowContainer = (props) => {
 
     const sendMsg = (formData) => {
         console.log('emitting new message');
+        props.setTest(formData.inputData);
+        socket.emit('new message', {
+            newMsgData: formData.inputData
+        });
+    };
+
+    const sendMsgMob = (formData) => {
         props.setTest(formData.inputData);
         socket.emit('new message', {
             newMsgData: formData.inputData
@@ -58,9 +65,7 @@ const ChatWindowContainer = (props) => {
                 <div className='inputWrapper'>
                     <InputMsgReduxForm onSubmit={sendMsg}/>
                 </div>
-                <button className="inputBtn">
-                    <img src={planeIcon} alt=""/>
-                </button>
+
             </div>
         </div>
     )

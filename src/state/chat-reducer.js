@@ -32,7 +32,8 @@ const chatReducer = (state = initialState, action) => {
                     userName: 'Ilyas',
                     msgData: action.inputData,
                     data: new Date().getHours() + ':' + new Date().getMinutes()
-                }]
+                }],
+
             };
         case UPDATE_NEW_SEARCH_VALUE:
             return {

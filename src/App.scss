@@ -30,6 +30,10 @@
   }
 }
 
+input::placeholder {
+  padding: 8px;
+}
+
 @media screen and (max-width: 768px) {
   .sidebar {
     display: none;
