@@ -3,6 +3,8 @@ import './App.scss';
 import ChatWindowContainer from "./containers/ChatWindowContainer/ChatWindowContainer";
 import SidebarContainer from "./containers/SidebarContainer/SidebarContainer";
 import {Route} from "react-router-dom";
+import ChatMessagesContainer from "./containers/ChatMessagesContainer/ChatMessagesContainer";
+import InputMessageCOntainer from "./containers/InputMessageContainer/InputMessageContainer";
 
 const App = (props) => (
     <div className="appWrapper">
@@ -14,7 +16,12 @@ const App = (props) => (
                         <SidebarContainer/>
                     </div>
 
-                <ChatWindowContainer/>
+                <div className='chatWindowWrapper'>
+                    <Route path='/:UID' render={() =>
+                        <ChatMessagesContainer />
+                    }/>
+                    <InputMessageCOntainer/>
+                </div>
 
             </div>
 

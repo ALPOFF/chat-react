@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 import ChatMessageContainer from "../ChatMessageContainer/ChatMessageContainer";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+import {compose} from "redux";
 
 class ChatMessagesContainer extends Component {
+    componentDidMount() {
+        debugger
+    }
+
     render() {
         return (
             <div className="messagesWrapper">
@@ -22,4 +29,9 @@ class ChatMessagesContainer extends Component {
     }
 }
 
-export default ChatMessagesContainer;
+const mapStateToProps = (state) => ({
+    msg: state.chatReducer.msg,
+    activeUser: state.chatReducer.activeUser
+});
+
+export default compose(connect(mapStateToProps, {}), withRouter) (ChatMessagesContainer);

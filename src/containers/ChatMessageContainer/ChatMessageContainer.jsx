@@ -1,6 +1,6 @@
 import React from "react";
 import './ChatMessageContainer.scss'
-import userIcon from './../../assets/images/man.png'
+import userIcon from './../../assets/images/ava.png'
 
 const ChatMessageContainer = (props) => {
     return (
@@ -18,7 +18,7 @@ const ChatMessageContainer = (props) => {
                     {props.data}
                 </div>
             </div>
-            <div>
+            <div className="msg">
                 {props.msgData}
             </div>
         </>

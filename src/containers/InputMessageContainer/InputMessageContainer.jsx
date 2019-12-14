@@ -1,6 +1,8 @@
 import React from "react";
 import clipIcon from "../../assets/images/clip_icon.png";
 import InputMsgReduxForm from "../../ReduxForm/InputMsgReduxForm/InputMsgReduxForm";
+import {connect} from "react-redux";
+import {setTest} from "../../state/chat-reducer";
 const io = require('socket.io-client');
 const socket = io('http://localhost:3000');
 
@@ -8,7 +10,7 @@ const InputMessageCOntainer = (props) => {
 
     const sendMsg = (formData) => {
         console.log('emitting new message');
-        this.props.setTest(formData.inputData);
+        props.setTest(formData.inputData);
         socket.emit('new message', {
             newMsgData: formData.inputData
         });
@@ -27,4 +29,4 @@ const InputMessageCOntainer = (props) => {
     )
 };
 
-export default InputMessageCOntainer;
+export default connect(null, {setTest}) (InputMessageCOntainer);
