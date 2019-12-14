@@ -8,6 +8,7 @@ const SidebarContainer = (props) => {
 
     const onNewSearchValue = (e) => {
         let new_search_value = e.target.value;
+        console.log(new_search_value)
         props.update_new_pic_value(new_search_value);
         props.getNewPicArr()
     };
@@ -19,14 +20,14 @@ const SidebarContainer = (props) => {
     return (
         <>
             <div className="search">
-                <input value={props.new_search_value} onChange={onNewSearchValue} placeholder="Search ..." type="text"/>
+                <input value={props.new_search_value} onChange={onNewSearchValue} placeholder="Search user..." type="text"/>
                 {props.new_search_value !== '' && <button className="clearSearch" onClick={clearInputSearch}>
                     <img src={clearSearch_icon} alt="" height={20}/>
                 </button>
                 }
             </div>
             {props.new_search_value !== ''
-                ? <div>{props.searchResult.map(u => <div className="dialogItem">
+                ? <div className="dialogs">{props.searchResult.map(u => <div className="dialogItem">
                     {u.userName}
                     <br/>
                     {u.msgData}

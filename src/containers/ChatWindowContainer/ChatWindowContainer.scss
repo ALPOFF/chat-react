@@ -47,14 +47,16 @@
   border-top: 1px solid grey;
   margin-top: auto;
   width: 100%;
-.inputBtn {
-  display: none;
-}
+
+  .inputBtn {
+    display: none;
+  }
+
   button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    overflow: hidden;
+    //overflow: hidden;
     outline: none;
   }
 }
@@ -63,9 +65,16 @@
   .chatWindowWrapper {
     width: 300px;
     border-radius: 8px;
+
     img {
       display: block;
       height: 30px;
+    }
+  }
+
+  .inputBodyWrapper {
+    .inputBtn {
+      display: block;
     }
   }
 }
