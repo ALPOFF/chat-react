@@ -11,7 +11,9 @@ const ChatMessageContainer = (props) => {
                     :
                     <img src={userIcon} alt=""/>
                 }
-                {props.userName}
+                <div className="userName">
+                    {props.userName}
+                </div>
                 <div className="data">
                     {props.data}
                 </div>

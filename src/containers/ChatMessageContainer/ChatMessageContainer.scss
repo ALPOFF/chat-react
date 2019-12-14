@@ -1,9 +1,22 @@
 .userInfo {
   display: flex;
   align-items: center;
+  .data {
+    color: #a3a5b1;
+  }
+
+  .userName {
+    color: #162B58;
+    font-weight: bolder;
+    padding: 5px;
+  }
+
+  img {
+    border: 2px solid #162B58;
+    border-radius: 40px;
+    height: 35px;
+
+  }
 }
 
-.data {
-  padding-left: 5px;
-  color: #a3a5b1;
-}
+
