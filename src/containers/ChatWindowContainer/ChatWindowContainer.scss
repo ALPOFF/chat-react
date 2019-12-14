@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 650px;
   height: 500px;
-  background-color: white;
+  background-color: #5880d23b;
   border-radius: 0 8px 8px 0;
 
   input {
@@ -47,7 +47,8 @@
   border-top: 1px solid grey;
   margin-top: auto;
   width: 100%;
-
+  background: #162b58;
+  border-radius: 0 0 4px 0;
   .inputBtn {
     display: none;
   }

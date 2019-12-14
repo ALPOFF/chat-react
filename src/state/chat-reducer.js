@@ -6,10 +6,13 @@ const CLEAR_SEARCH = 'CLEAR_SEARCH'
 let initialState = {
     msg: [
         {id: 0, userIcon: null, userName: 'User 1', msgData: 'Hello!', data: '17:45'},
-        {id: 1, userIcon: null, userName: 'User 2', msgData: 'Hi', data: '18:00'}
+        {id: 1, userIcon: null, userName: 'User 2', msgData: 'Dfdsf', data: '14:00'},
+        {id: 2, userIcon: null, userName: 'User 3', msgData: 'FDds', data: '12:00'},
+        {id: 3, userIcon: null, userName: 'User 4', msgData: 'Dfsd', data: '13:00'},
+        {id: 4, userIcon: null, userName: 'User 5', msgData: 'F dsfsd', data: '11:00'}
     ],
     test: '4',
-    activeUser: 'User 1',
+    activeUser: 2,
     dialogs: [
         {id: 0, userName: 'User 1', msgData: 'Hello!'},
         {id: 1, userName: 'rser 2', msgData: 'Hi'},
