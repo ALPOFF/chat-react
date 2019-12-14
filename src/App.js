@@ -6,14 +6,18 @@ import {Route} from "react-router-dom";
 
 const App = (props) => (
     <div className="appWrapper">
-        <Route path='/profile/:UID' render={() =>
+
             <div className="chatWrapper">
-                <div className="sidebar">
-                    <SidebarContainer/>
-                </div>
+
+
+                    <div className="sidebar">
+                        <SidebarContainer/>
+                    </div>
+
                 <ChatWindowContainer/>
+
             </div>
-        }/>
+
     </div>
 );
 

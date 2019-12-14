@@ -28,14 +28,14 @@ const SidebarContainer = (props) => {
                 }
             </div>
             {props.new_search_value !== ''
-                ? <div className="dialogs">{props.searchResult.map(u => <NavLink to={'/profile/' + u.id}><div className="dialogItem">
+                ? <div className="dialogs">{props.searchResult.map(u => <NavLink to={'/' + u.id}><div className="dialogItem">
                     {u.userName}
                     <br/>
                     {u.msgData}
                 </div></NavLink>)}</div>
                 :
                 <div className="dialogs">
-                    {props.dialogs.map(d => <NavLink to={'/profile/' + d.id}><div className="dialogItem">
+                    {props.dialogs.map(d => <NavLink to={'/' + d.id}><div className="dialogItem">
                         {d.userName}
                         <br/>
                         {d.msgData}

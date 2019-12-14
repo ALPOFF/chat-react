@@ -7,6 +7,8 @@ import InputMsgReduxForm from "../../ReduxForm/InputMsgReduxForm/InputMsgReduxFo
 import {setTest} from "../../state/chat-reducer";
 import {Route, withRouter} from "react-router-dom";
 import {compose} from "redux";
+import ChatMessagesContainer from "../ChatMessagesContainer/ChatMessagesContainer";
+import InputMessageCOntainer from "../InputMessageContainer/InputMessageContainer";
 
 const io = require('socket.io-client');
 const socket = io('http://localhost:3000');
@@ -33,13 +35,7 @@ class ChatWindowContainer extends Component {
             console.log('attach file')
         };
 
-        const sendMsg = (formData) => {
-            console.log('emitting new message');
-            this.props.setTest(formData.inputData);
-            socket.emit('new message', {
-                newMsgData: formData.inputData
-            });
-        };
+
 
         const sendMsgMob = (formData) => {
             this.props.setTest(formData.inputData);
@@ -50,31 +46,10 @@ class ChatWindowContainer extends Component {
 
         return (
             <div className='chatWindowWrapper'>
-                <Route path='/profile/:UID' render={() =>
-                    <div className="messagesWrapper">
-                        {this.props.msg.map(m =>
-                            (m.id === this.props.activeUser)
-                                ? <div className="messageWrapperL">
-                                    <ChatMessageContainer userIcon={m.userIcon} userName={m.userName} msgData={m.msgData}
-                                                          data={m.data}/>
-                                </div>
-
-                                : <div className="messageWrapperR"><ChatMessageContainer userIcon={m.userIcon}
-                                                                                         userName={m.userName}
-                                                                                         msgData={m.msgData}
-                                                                                         data={m.data}/></div>
-                        )}
-                    </div>
+                <Route path='/:UID' render={() =>
+              <ChatMessagesContainer msg={this.props.msg} activeUser={this.props.activeUser}/>
                 }/>
-                <div className='inputBodyWrapper'>
-                    <button>
-                        <img src={clipIcon} alt=""/>
-                    </button>
-                    <div className='inputWrapper'>
-                        <InputMsgReduxForm onSubmit={sendMsg}/>
-                    </div>
-
-                </div>
+                <InputMessageCOntainer/>
             </div>
         )
     }
