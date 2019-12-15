@@ -3,6 +3,8 @@ import clipIcon from "../../assets/images/clip_icon.png";
 import InputMsgReduxForm from "../../ReduxForm/InputMsgReduxForm/InputMsgReduxForm";
 import {connect} from "react-redux";
 import {setTest} from "../../state/chat-reducer";
+import  './../ChatWindowContainer/ChatWindowContainer.scss'
+
 const io = require('socket.io-client');
 const socket = io('http://localhost:3000');
 

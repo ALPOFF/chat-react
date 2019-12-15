@@ -28,14 +28,14 @@ const SidebarContainer = (props) => {
                 }
             </div>
             {props.new_search_value !== ''
-                ? <div className="dialogs">{props.searchResult.map(u => <NavLink to={'/' + u.id}><div className="dialogItem">
+                ? <div className="dialogs">{props.searchResult.map(u => <NavLink to={'/dialog/' + u.id}><div className="dialogItem">
                     {u.userName}
                     <br/>
                     {u.msgData}
                 </div></NavLink>)}</div>
                 :
                 <div className="dialogs">
-                    {props.dialogs.map(d => <NavLink to={'/' + d.id}><div className="dialogItem">
+                    {props.dialogs.map(d => <NavLink to={'/dialog/' + d.id}><div className="dialogItem">
                         {d.userName}
                         <br/>
                         {d.msgData}
@@ -47,7 +47,6 @@ const SidebarContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    msg: state.chatReducer.msg,
     dialogs: state.chatReducer.dialogs,
     new_search_value: state.chatReducer.new_search_value,
     searchResult: state.chatReducer.searchResult
