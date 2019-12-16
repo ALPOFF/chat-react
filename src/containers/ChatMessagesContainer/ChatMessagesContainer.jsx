@@ -8,7 +8,6 @@ class ChatMessagesContainer extends Component {
     componentDidMount() {
         debugger
         let dialogId = this.props.match.UID;
-
     }
 
     render() {
