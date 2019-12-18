@@ -1,46 +1,31 @@
 const express = require('express');
+const cors = require('cors')
 const port = 3000;
 const http = require('http');
 const app = express();
 const socketIO = require('socket.io');
-
-
 const server = http.createServer(app);
 const io = socketIO(server);
 
-io.on('connection', socket => {
-    console.log('a user connected');
+app.use(cors())
 
-    socket.on('disconnect', reason => {
-        console.log('user disconnected');
-    });
+let store = {
+    testval: 5,
+    users: [
+        {userId: 0, userName: 'Alex'},
+        {userId: 1, userName: 'Edward'},
+        {userId: 2, userName: 'Luise'},
+        {userId: 3, userName: 'Elise'}
+    ]
+};
 
-    socket.on('room', data => {
-        console.log('room join');
-        console.log(data);
-        socket.join(data.room);
-    });
+app.post('/', (req, res) => {
+    return res.send('Received a POST HTTP method');
+});
 
-    socket.on('leave room', data => {
-        console.log('leaving room');
-        console.log(data);
-        socket.leave(data.room)
-    });
-
-    /*socket.on('new message', data => {
-        console.log(data.room);
-        socket.broadcast
-            .to(data.room)
-            .emit('receive message', data)
-    });*/
-
-    socket.on('new message', data => {
-        console.log(data.newMsgData);
-        socket.broadcast
-            .to(data.room)
-            .emit('receive message', data)
-    });
-
+app.get('/users/', (req, res) => {
+    res.json(store.users)
+    //return res.send('Received a get HTTP method');
 });
 
 server.listen(port);

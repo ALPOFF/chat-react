@@ -1,7 +1,7 @@
 import React from "react";
 import './SidebarContainer.scss'
 import {connect} from "react-redux";
-import {clearSearch, getNewPicArr, update_new_pic_value} from "../../state/chat-reducer";
+import {clearSearch, getNewPicArr, postTest, update_new_pic_value} from "../../state/chat-reducer";
 import clearSearch_icon from './../../assets/images/clearSearch_icon.png'
 import {NavLink, withRouter} from "react-router-dom";
 import {compose} from "redux";
@@ -17,9 +17,15 @@ const SidebarContainer = (props) => {
         props.clearSearch()
     };
 
+    let ggg =() => {
+        let a =5
+        props.postTest(a)
+    }
+
     return (
         <>
             <div className="search">
+                <button onClick={ggg}>dfdf</button>
                 <input value={props.new_search_value} onChange={onNewSearchValue} placeholder="Search user..."
                        type="text"/>
                 {props.new_search_value !== '' && <button className="clearSearch" onClick={clearInputSearch}>
@@ -41,6 +47,7 @@ const SidebarContainer = (props) => {
                         {d.msgData}
                     </div></NavLink>)}
                 </div>
+
             }
         </>
     )
@@ -52,4 +59,4 @@ const mapStateToProps = (state) => ({
     searchResult: state.chatReducer.searchResult
 });
 
-export default compose(connect(mapStateToProps, {update_new_pic_value, getNewPicArr, clearSearch}), withRouter)(SidebarContainer);
+export default compose(connect(mapStateToProps, {update_new_pic_value, getNewPicArr, clearSearch, postTest}), withRouter)(SidebarContainer);

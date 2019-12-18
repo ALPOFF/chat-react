@@ -1,7 +1,9 @@
+import {pst} from "../api/api";
+
 const SET_TEST = 'SET_TEST';
 const UPDATE_NEW_SEARCH_VALUE = 'UPDATE_NEW_SEARCH_VALUE';
 const GET_NEW_SEARCH_VAL = 'GET_NEW_PIC_ARR';
-const CLEAR_SEARCH = 'CLEAR_SEARCH'
+const CLEAR_SEARCH = 'CLEAR_SEARCH';
 
 let initialState = {
 
@@ -93,8 +95,9 @@ export const clearSearch = () => {
     }
 };
 
-export const getDialog = (member) => async (dispatch) => {
-
+export const postTest = () => async (dispatch) => {
+    let response = await pst();
+    console.log(response.data)
 };
 
 export default chatReducer;
