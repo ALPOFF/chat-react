@@ -7,3 +7,7 @@ export const getUsersData = () => {
 export const getDialog = (dialogId) => {
     return axios.get(`http://localhost:3000/dialogs/` + dialogId);
 };
+
+export const getDialogsList = () => {
+    return axios.get(`http://localhost:3000/`);
+};

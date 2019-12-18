@@ -15,21 +15,20 @@ function ChatMessagesContainer(props) {
     return (
         <div className="messagesWrapper">
             {props.text}
-            {props.dialogs.filter(d =>
-                d.id == 0
-            )[0].msg.map(m =>
-                (m.id === props.activeUser)
+            {props.msg.map(m =>
+                (m.userId === props.activeUser)
                     ? <div className="messageWrapperL">
                         <ChatMessageContainer userIcon={m.userIcon}
-                                              userName={m.userName}
-                                              msgData={m.msgData}
-                                              data={m.data}/>
+                                              //userName={m.userName}
+                                              userId={m.userId}
+                                              msgData={m.text}
+                                              data={m.textData}/>
                     </div>
                     : <div className="messageWrapperR">
                         <ChatMessageContainer userIcon={m.userIcon}
-                                              userName={m.userName}
-                                              msgData={m.msgData}
-                                              data={m.data}/></div>
+                                              userId={m.userId}
+                                              msgData={m.text}
+                                              data={m.textData}/></div>
             )
             }
         </div>
@@ -39,6 +38,7 @@ function ChatMessagesContainer(props) {
 const mapStateToProps = (state) => ({
     dialogs: state.chatReducer.dialogs,
     activeUser: state.chatReducer.activeUser,
+    msg: state.chatReducer.msg,
     text: state.chatReducer.text
 });
 

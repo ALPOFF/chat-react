@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {
     clearSearch,
     getDialogData,
-    getDialogs,
+    getDialogs, getDialogsListData,
     getNewPicArr,
     update_new_pic_value
 } from "../../state/chat-reducer";
@@ -15,7 +15,7 @@ import {compose} from "redux";
 const SidebarContainer = (props) => {
 
     useEffect(() => {
-        //props.getDialogs();
+        props.getDialogsListData();
     }, []);
 
     const onNewSearchValue = (e) => {
@@ -39,17 +39,17 @@ const SidebarContainer = (props) => {
                 }
             </div>
             {props.new_search_value !== ''
-                ? <div className="dialogs">{props.searchResult.map(u => <NavLink to={'/dialogs/' + u.id}><div className="dialogItem">
-                    {u.userName}
+                ? <div className="dialogs">{props.searchResult.map(u => <NavLink to={'/dialogs/' + u.userId}><div className="dialogItem">
+                    {u.userId}
                     <br/>
-                    {u.msgData}
+                    {u.text}
                 </div></NavLink>)}</div>
                 :
                 <div className="dialogs">
-                    {props.dialogs.map(d => <NavLink to={'/dialogs/' + d.id}><div className="dialogItem">
-                        {d.userName}
+                    {props.dialogsList.map(d => <NavLink to={'/dialogs/' + d.dialogId}><div className="dialogItem">
+                        {d.lastMsg.userId}
                         <br/>
-                        {d.msgData}
+                        {d.lastMsg.text}
                     </div></NavLink>)}
                 </div>
 
@@ -60,8 +60,10 @@ const SidebarContainer = (props) => {
 
 const mapStateToProps = (state) => ({
     dialogs: state.chatReducer.dialogs,
+    dialogsList: state.chatReducer.dialogsList,
+    msg: state.chatReducer.msg,
     new_search_value: state.chatReducer.new_search_value,
     searchResult: state.chatReducer.searchResult
 });
 
-export default compose(connect(mapStateToProps, {update_new_pic_value, getNewPicArr, clearSearch, getDialogs, getDialogData}), withRouter)(SidebarContainer);
+export default compose(connect(mapStateToProps, {update_new_pic_value, getNewPicArr, clearSearch, getDialogs, getDialogData, getDialogsListData}), withRouter)(SidebarContainer);

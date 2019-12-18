@@ -22,25 +22,25 @@ let store = {
         {
             dialogId: 0,
             msg: [
-                {userId: 0, msgId: 0, text: 'dgdfrr', textData: '1'},
-                {userId: 2, msgId: 1, text: 'gdfgds', textData: '2'},
-                {userId: 0, msgId: 2, text: 'erterg', textData: '3'}
+                {userId: 0, msgId: 0, text: 'dgdfrr', textData: '1', userIcon: null},
+                {userId: 2, msgId: 1, text: 'gdfgds', textData: '2', userIcon: null},
+                {userId: 0, msgId: 2, text: 'erterg', textData: '3', userIcon: null}
             ]
         },
         {
             dialogId: 1,
             msg: [
-                {userId: 2, msgId: 0, text: 'nbvc', textData: '1'},
-                {userId: 1, msgId: 1, text: 'vxcsd', textData: '2'},
-                {userId: 2, msgId: 2, text: 'hgdhgd', textData: '3'}
+                {userId: 2, msgId: 0, text: 'nbvc', textData: '1', userIcon: null},
+                {userId: 1, msgId: 1, text: 'vxcsd', textData: '2', userIcon: null},
+                {userId: 2, msgId: 2, text: 'hgdhgd', textData: '3', userIcon: null}
             ]
         },
         {
             dialogId: 2,
             msg: [
-                {userId: 2, msgId: 0, text: 'ykyu', textData: '1'},
-                {userId: 2, msgId: 1, text: 'rete', textData: '2'},
-                {userId: 3, msgId: 2, text: 'kyu', textData: '3'}
+                {userId: 2, msgId: 0, text: 'ykyu', textData: '1', userIcon: null},
+                {userId: 2, msgId: 1, text: 'rete', textData: '2', userIcon: null},
+                {userId: 3, msgId: 2, text: 'kyu', textData: '3', userIcon: null}
             ]
         },
 
@@ -55,15 +55,16 @@ let store = {
     ]
 };
 
-app.post('/', (req, res) => {
-    return res.send('Received a POST HTTP method');
+app.get('/', (req, res) => {
+    let dialogsList = [];
+    store.dialogs.map(d => dialogsList.push({'dialogId': d.dialogId, lastMsg: d.msg[d.msg.length-1]}));
+    res.send(dialogsList);
 });
 
 app.get('/dialogs/:id', (req, res) => {
-    let filteredDialogId = store.dialogs.map(d => d.filter(d => d.dialogId == req.params.id));
-    let g = filteredDialogId.map()
-    console.log(a)
-    res.send(a[0].text)
+    let filteredDialogId = store.dialogs.filter(d => d.dialogId == req.params.id);
+    res.send(filteredDialogId);
+    console.log(filteredDialogId)
     //return res.send('Received a get HTTP method');
 });
 

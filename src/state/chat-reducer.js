@@ -1,10 +1,11 @@
-import {getDialog, getUsersData, pst} from "../api/api";
+import {getDialog, getDialogsList, getUsersData} from "../api/api";
 
 const SET_TEST = 'SET_TEST';
 const UPDATE_NEW_SEARCH_VALUE = 'UPDATE_NEW_SEARCH_VALUE';
 const GET_NEW_SEARCH_VAL = 'GET_NEW_PIC_ARR';
 const CLEAR_SEARCH = 'CLEAR_SEARCH';
 const SET_CURRENT_DIALOG = 'SET_CURRENT_DIALOG';
+const SET_DIALOGS_LIST = 'SET_DIALOGS_LIST'
 
 let initialState = {
 
@@ -38,7 +39,10 @@ let initialState = {
 
     new_search_value: '',
     searchResult: [],
-    text: ''
+    text: '',
+    dialogsList: [],
+    dialogId: null,
+    msg: []
 };
 
 const chatReducer = (state = initialState, action) => {
@@ -73,7 +77,13 @@ const chatReducer = (state = initialState, action) => {
         case SET_CURRENT_DIALOG:
             return {
                 ...state,
-                text: action.text
+                dialogId: action.dialogId,
+                msg: action.msg
+            };
+        case SET_DIALOGS_LIST:
+            return {
+                ...state,
+                dialogsList: action.dialogsList
             };
         default:
             return state
@@ -106,10 +116,18 @@ export const clearSearch = () => {
     }
 };
 
-const setCurrentDialog = (text) => {
+const setCurrentDialog = (dialogId, msg) => {
     return {
         type: SET_CURRENT_DIALOG,
-        text
+        dialogId,
+        msg
+    }
+};
+
+const setDialogsList = (dialogsList) => {
+    return {
+        type: SET_DIALOGS_LIST,
+        dialogsList
     }
 };
 
@@ -121,7 +139,13 @@ export const getDialogs = () => async (dispatch) => {
 export const getDialogData = (dialogId) => async (dispatch) => {
     let response = await getDialog(dialogId);
     console.log(response.data)
-    dispatch(setCurrentDialog(response.data))
+    dispatch(setCurrentDialog(response.data[0].dialogId, response.data[0].msg))
+};
+
+export const getDialogsListData = () => async (dispatch) => {
+    let response = await getDialogsList();
+    console.log(response.data)
+    dispatch(setDialogsList(response.data))
 };
 
 export default chatReducer;
