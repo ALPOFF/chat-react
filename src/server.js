@@ -20,49 +20,30 @@ let store = {
     ],
     dialogs: [
         {
-            dialogId: 0, msgsData: [
-                {
-                    userId: 0, msgs: [
-                        {msgId: 0, text: 'sdfsdd', textData: 'Дата'},
-                        {msgId: 1, text: 'sdfsdd', textData: 'Дата'}
-                    ]
-                },
-                {userId: 2, msgs: {text: 'dfgdfgdfd'}, textData: 'Дата'}
+            dialogId: 0,
+            msg: [
+                {userId: 0, msgId: 0, text: 'dgdfrr', textData: '1'},
+                {userId: 2, msgId: 1, text: 'gdfgds', textData: '2'},
+                {userId: 0, msgId: 2, text: 'erterg', textData: '3'}
             ]
         },
         {
-            dialogId: 1, msgsData: [
-                {
-                    userId: 1, msgs: [
-                        {msgId: 0, text: 'ddfgdf', textData: 'Дата'},
-                        {msgId: 1, text: 'ertre', textData: 'Дата'}
-                    ]
-                },
-                {userId: 2, msgs: {text: 'tyuif'}, textData: 'Дата'}
+            dialogId: 1,
+            msg: [
+                {userId: 2, msgId: 0, text: 'nbvc', textData: '1'},
+                {userId: 1, msgId: 1, text: 'vxcsd', textData: '2'},
+                {userId: 2, msgId: 2, text: 'hgdhgd', textData: '3'}
             ]
         },
         {
-            dialogId: 2, msgsData: [
-                {
-                    userId: 3, msgs: [
-                        {msgId: 0, text: 'cvbcv', textData: 'Дата'},
-                        {msgId: 1, text: 'sdfsdf', textData: 'Дата'}
-                    ]
-                },
-                {userId: 2, msgs: {text: 'dfgdfgdfd'}, textData: 'Дата'}
+            dialogId: 2,
+            msg: [
+                {userId: 2, msgId: 0, text: 'ykyu', textData: '1'},
+                {userId: 2, msgId: 1, text: 'rete', textData: '2'},
+                {userId: 3, msgId: 2, text: 'kyu', textData: '3'}
             ]
         },
-        {
-            dialogId: 3, msgsData: [
-                {
-                    userId: 4, msgs: [
-                        {msgId: 0, text: ',nbnmbn', textData: 'Дата'},
-                        {msgId: 1, text: 'uyiyuiy', textData: 'Дата'}
-                    ]
-                },
-                {userId: 2, msgs: {text: 'dfgdfgdfd'}, textData: 'Дата'}
-            ]
-        }
+
     ],
 
     testPage: [
@@ -79,7 +60,8 @@ app.post('/', (req, res) => {
 });
 
 app.get('/dialogs/:id', (req, res) => {
-    let a = store.testPage.filter(d => d.id == req.params.id);
+    let filteredDialogId = store.dialogs.map(d => d.filter(d => d.dialogId == req.params.id));
+    let g = filteredDialogId.map()
     console.log(a)
     res.send(a[0].text)
     //return res.send('Received a get HTTP method');
