@@ -12,7 +12,7 @@ const App = (props) => (
                         <SidebarContainer/>
                     </div>
                 <div className='chatWindowWrapper'>
-                    <Route path='/dialog/:UID' render={() =>
+                    <Route path='/dialogs/:dialogId' render={() =>
                         <ChatMessagesContainer />
                     }/>
                     <InputMessageCOntainer/>

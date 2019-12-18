@@ -16,6 +16,13 @@ let store = {
         {userId: 1, userName: 'Edward'},
         {userId: 2, userName: 'Luise'},
         {userId: 3, userName: 'Elise'}
+    ],
+    testPage: [
+        {id: 0, text: 'zero page'},
+        {id: 1, text: 'first page'},
+        {id: 2, text: 'second page'},
+        {id: 3, text: 'third page'},
+        {id: 4, text: 'fourth page'}
     ]
 };
 
@@ -23,8 +30,10 @@ app.post('/', (req, res) => {
     return res.send('Received a POST HTTP method');
 });
 
-app.get('/users/', (req, res) => {
-    res.json(store.users)
+app.get('/dialogs/:id', (req, res) => {
+    let a = store.testPage.filter(d => d.id == req.params.id);
+    console.log(a)
+    res.send(a[0].text)
     //return res.send('Received a get HTTP method');
 });
 

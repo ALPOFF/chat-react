@@ -1,9 +1,10 @@
-import {pst} from "../api/api";
+import {getDialog, getUsersData, pst} from "../api/api";
 
 const SET_TEST = 'SET_TEST';
 const UPDATE_NEW_SEARCH_VALUE = 'UPDATE_NEW_SEARCH_VALUE';
 const GET_NEW_SEARCH_VAL = 'GET_NEW_PIC_ARR';
 const CLEAR_SEARCH = 'CLEAR_SEARCH';
+const SET_CURRENT_DIALOG = 'SET_CURRENT_DIALOG';
 
 let initialState = {
 
@@ -12,27 +13,32 @@ let initialState = {
 
     //users Data
     dialogs: [
-        {id: 0, userName: 'User 0', msgData: 'dfsfsdf', msg: [
+        {
+            id: 0, userName: 'User 0', msgData: 'dfsfsdf', msg: [
                 {id: 0, msgData: 'Hello!', data: '17:45', userIcon: null, userName: 'User 0'},
                 {id: 2, msgData: 'Dfdsf', data: '14:00', userIcon: null, userName: 'User 2'},
                 {id: 0, msgData: 'FDds', data: '12:00', userIcon: null, userName: 'User 0'},
                 {id: 2, msgData: 'Dfsd', data: '13:00', userIcon: null, userName: 'User 2'},
                 {id: 0, msgData: 'F dsfsd', data: '11:00', userIcon: null, userName: 'User 0'}
-            ]},
-        {id: 1, userName: 'User 1', msgData: 'bnmbnmbnm', msg: [
+            ]
+        },
+        {
+            id: 1, userName: 'User 1', msgData: 'bnmbnmbnm', msg: [
                 {id: 0, msgData: 'sdfsdfsd!', data: '17:45', userIcon: null, userName: 'User 0'},
                 {id: 1, msgData: 'zcsxcv', data: '14:00', userIcon: null, userName: 'User 1'},
                 {id: 0, msgData: 'qweqweqw', data: '12:00', userIcon: null, userName: 'User 0'},
                 {id: 1, msgData: 'rtgeter', data: '13:00', userIcon: null, userName: 'User 1'},
                 {id: 0, msgData: 'F werwerwe', data: '11:00', userIcon: null, userName: 'User 0'}
-            ]},
+            ]
+        },
         {id: 2, userName: 'User 2', userIcon: null, msgData: 'cvbcvb'},
         {id: 3, userName: 'User 3', userIcon: null, msgData: 'sdfsdf'},
         {id: 4, userName: 'User 4', userIcon: null, msgData: 'umvvghf'}
     ],
 
     new_search_value: '',
-    searchResult: []
+    searchResult: [],
+    text: ''
 };
 
 const chatReducer = (state = initialState, action) => {
@@ -63,6 +69,11 @@ const chatReducer = (state = initialState, action) => {
             return {
                 ...state,
                 new_search_value: ''
+            };
+        case SET_CURRENT_DIALOG:
+            return {
+                ...state,
+                text: action.text
             };
         default:
             return state
@@ -95,9 +106,22 @@ export const clearSearch = () => {
     }
 };
 
-export const postTest = () => async (dispatch) => {
-    let response = await pst();
+const setCurrentDialog = (text) => {
+    return {
+        type: SET_CURRENT_DIALOG,
+        text
+    }
+};
+
+export const getDialogs = () => async (dispatch) => {
+    let response = await getUsersData();
     console.log(response.data)
+};
+
+export const getDialogData = (dialogId) => async (dispatch) => {
+    let response = await getDialog(dialogId);
+    console.log(response.data)
+    dispatch(setCurrentDialog(response.data))
 };
 
 export default chatReducer;
