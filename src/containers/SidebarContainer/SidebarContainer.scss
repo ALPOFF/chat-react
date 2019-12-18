@@ -3,6 +3,10 @@
   flex-direction: column;
   margin: 10px;
 
+  a {
+    text-decoration: none;
+  }
+
   .dialogItem {
     height: 55px;
     color: white;

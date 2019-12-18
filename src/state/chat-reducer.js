@@ -8,35 +8,8 @@ const SET_CURRENT_DIALOG = 'SET_CURRENT_DIALOG';
 const SET_DIALOGS_LIST = 'SET_DIALOGS_LIST'
 
 let initialState = {
-
     test: '4',
     activeUser: 2,
-
-    //users Data
-    dialogs: [
-        {
-            id: 0, userName: 'User 0', msgData: 'dfsfsdf', msg: [
-                {id: 0, msgData: 'Hello!', data: '17:45', userIcon: null, userName: 'User 0'},
-                {id: 2, msgData: 'Dfdsf', data: '14:00', userIcon: null, userName: 'User 2'},
-                {id: 0, msgData: 'FDds', data: '12:00', userIcon: null, userName: 'User 0'},
-                {id: 2, msgData: 'Dfsd', data: '13:00', userIcon: null, userName: 'User 2'},
-                {id: 0, msgData: 'F dsfsd', data: '11:00', userIcon: null, userName: 'User 0'}
-            ]
-        },
-        {
-            id: 1, userName: 'User 1', msgData: 'bnmbnmbnm', msg: [
-                {id: 0, msgData: 'sdfsdfsd!', data: '17:45', userIcon: null, userName: 'User 0'},
-                {id: 1, msgData: 'zcsxcv', data: '14:00', userIcon: null, userName: 'User 1'},
-                {id: 0, msgData: 'qweqweqw', data: '12:00', userIcon: null, userName: 'User 0'},
-                {id: 1, msgData: 'rtgeter', data: '13:00', userIcon: null, userName: 'User 1'},
-                {id: 0, msgData: 'F werwerwe', data: '11:00', userIcon: null, userName: 'User 0'}
-            ]
-        },
-        {id: 2, userName: 'User 2', userIcon: null, msgData: 'cvbcvb'},
-        {id: 3, userName: 'User 3', userIcon: null, msgData: 'sdfsdf'},
-        {id: 4, userName: 'User 4', userIcon: null, msgData: 'umvvghf'}
-    ],
-
     new_search_value: '',
     searchResult: [],
     text: '',
@@ -50,14 +23,7 @@ const chatReducer = (state = initialState, action) => {
         case SET_TEST:
             return {
                 ...state,
-                msg: [...state.msg, {
-                    id: 0,
-                    userIcon: null,
-                    userName: 'User 0',
-                    msgData: action.inputData,
-                    data: new Date().getHours() + ':' + new Date().getMinutes()
-                }],
-
+                msg: [...state.msg, {userId: state.activeUser, userName: 'Alex', msgId: 2, text: action.inputData, textData: '3', userIcon: null}],
             };
         case UPDATE_NEW_SEARCH_VALUE:
             return {

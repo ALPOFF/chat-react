@@ -17,7 +17,8 @@
   background-color: #162B58;
 
   input {
-      height: 25px;
+      padding-left: 8px;
+      height: 30px;
       overflow: auto;
       width: 250px;
       border-radius: 3px;
@@ -29,9 +30,9 @@
   }
 }
 
-input::placeholder {
+/*input::placeholder {
   padding: 8px;
-}
+}*/
 
 @media screen and (max-width: 768px) {
   .sidebar {

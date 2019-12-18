@@ -13,9 +13,7 @@ const InputMessageCOntainer = (props) => {
     const sendMsg = (formData) => {
         console.log('emitting new message');
         props.setTest(formData.inputData);
-        socket.emit('new message', {
-            newMsgData: formData.inputData
-        });
+
     };
 
     return (
