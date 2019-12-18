@@ -1,4 +1,4 @@
-import {getDialog, getDialogsList, getUsersData} from "../api/api";
+import {getDialog, getDialogsList, getUsersData, sendMessage} from "../api/api";
 
 const SET_TEST = 'SET_TEST';
 const UPDATE_NEW_SEARCH_VALUE = 'UPDATE_NEW_SEARCH_VALUE';
@@ -102,9 +102,15 @@ export const getDialogs = () => async (dispatch) => {
     console.log(response.data)
 };
 
+export const sendMessageData = (inputData) => async (dispatch) => {
+    let response = await sendMessage(inputData);
+    console.log(response.data)
+    dispatch(setTest(inputData))
+};
+
 export const getDialogData = (dialogId) => async (dispatch) => {
     let response = await getDialog(dialogId);
-    console.log(response.data)
+    console.log(response.data);
     dispatch(setCurrentDialog(response.data[0].dialogId, response.data[0].msg))
 };
 

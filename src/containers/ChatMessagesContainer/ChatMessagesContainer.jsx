@@ -5,7 +5,7 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {getDialogData} from "../../state/chat-reducer";
 
-function ChatMessagesContainer(props) {
+const ChatMessagesContainer = props => {
     useEffect(() => {
         let dialogId = props.match.params.dialogId;
         console.log(dialogId)
@@ -33,7 +33,7 @@ function ChatMessagesContainer(props) {
             }
         </div>
     )
-}
+};
 
 const mapStateToProps = (state) => ({
     dialogs: state.chatReducer.dialogs,

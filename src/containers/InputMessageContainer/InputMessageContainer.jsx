@@ -2,7 +2,7 @@ import React from "react";
 import clipIcon from "../../assets/images/clip_icon.png";
 import InputMsgReduxForm from "../../ReduxForm/InputMsgReduxForm/InputMsgReduxForm";
 import {connect} from "react-redux";
-import {setTest} from "../../state/chat-reducer";
+import {sendMessageData} from "../../state/chat-reducer";
 import  './../ChatWindowContainer/ChatWindowContainer.scss'
 
 const io = require('socket.io-client');
@@ -12,8 +12,7 @@ const InputMessageCOntainer = (props) => {
 
     const sendMsg = (formData) => {
         console.log('emitting new message');
-        props.setTest(formData.inputData);
-
+        props.sendMessageData(formData.inputData);
     };
 
     return (
@@ -29,4 +28,4 @@ const InputMessageCOntainer = (props) => {
     )
 };
 
-export default connect(null, {setTest}) (InputMessageCOntainer);
+export default connect(null, {sendMessageData}) (InputMessageCOntainer);
