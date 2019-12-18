@@ -67,7 +67,7 @@ const chatReducer = (state = initialState, action) => {
         case GET_NEW_SEARCH_VAL:
             return {
                 ...state,
-                searchResult: state.users.filter(u => u.userName.includes(state.new_search_value))
+                searchResult: state.dialogsList.filter(u => u.lastMsg.userName.includes(state.new_search_value) || u.lastMsg.text.includes(state.new_search_value))
             };
         case CLEAR_SEARCH:
             return {

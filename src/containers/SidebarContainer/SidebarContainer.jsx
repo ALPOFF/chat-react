@@ -40,14 +40,14 @@ const SidebarContainer = (props) => {
             </div>
             {props.new_search_value !== ''
                 ? <div className="dialogs">{props.searchResult.map(u => <NavLink to={'/dialogs/' + u.userId}><div className="dialogItem">
-                    {u.userId}
+                    {u.lastMsg.userName}
                     <br/>
-                    {u.text}
+                    {u.lastMsg.text}
                 </div></NavLink>)}</div>
                 :
                 <div className="dialogs">
                     {props.dialogsList.map(d => <NavLink to={'/dialogs/' + d.dialogId}><div className="dialogItem">
-                        {d.lastMsg.userId}
+                        {d.lastMsg.userName}
                         <br/>
                         {d.lastMsg.text}
                     </div></NavLink>)}
