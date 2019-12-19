@@ -66,13 +66,11 @@ app.get('/', (req, res) => {
 app.get('/dialogs/:id', (req, res) => {
     let filteredDialogId = store.dialogs.filter(d => d.dialogId == req.params.id);
     res.send(filteredDialogId);
-    console.log(req)
+    //console.log(req)
     //return res.send('Received a get HTTP method');
 });
 
 app.post('/dialogs/', (req, res) => {
-    let filteredDialogId = store.dialogs.filter(d => d.dialogId == req.params.id);
-    res.send(filteredDialogId);
     console.log(req.body);
     //return res.send('Received a get HTTP method');
 });

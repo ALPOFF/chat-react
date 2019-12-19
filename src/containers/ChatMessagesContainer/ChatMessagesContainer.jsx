@@ -19,13 +19,14 @@ const ChatMessagesContainer = props => {
                 (m.userId === props.activeUser)
                     ? <div className="messageWrapperL">
                         <ChatMessageContainer userIcon={m.userIcon}
-                                              //userName={m.userName}
+                                              userName={m.userName}
                                               userId={m.userId}
                                               msgData={m.text}
                                               data={m.textData}/>
                     </div>
                     : <div className="messageWrapperR">
                         <ChatMessageContainer userIcon={m.userIcon}
+                                              userName={m.userName}
                                               userId={m.userId}
                                               msgData={m.text}
                                               data={m.textData}/></div>

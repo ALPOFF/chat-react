@@ -13,5 +13,6 @@ export const getDialogsList = () => {
 };
 
 export const sendMessage = (inputData) => {
-    return axios.post(`http://localhost:3000/dialogs/`, {id: 4, ff: 44});
+    return axios.post(`http://localhost:3000/dialogs/`,
+        {dialogId: 0, msgData: {userId: 3, userName: 'Elise', msgId: 0, text: inputData, textData: '', userIcon: null}});
 };
