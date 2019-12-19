@@ -102,11 +102,12 @@ export const getDialogs = () => async (dispatch) => {
     console.log(response.data)
 };
 
-export const sendMessageData = (inputData) => async (dispatch) => {
+//set Test with send
+/*export const sendMessageData = (inputData) => async (dispatch) => {
     let response = await sendMessage(inputData);
     console.log(response.data)
     dispatch(setTest(inputData))
-};
+};*/
 
 export const getDialogData = (dialogId) => async (dispatch) => {
     let response = await getDialog(dialogId);
