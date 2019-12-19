@@ -24,25 +24,25 @@ let store = {
             dialogId: 0,
             dialogUsers: [0, 2],
             msg: [
-                {userId: 0, userName: 'Alex', msgId: 0, text: 'dfsfd', textData: '1', userIcon: null},
-                {userId: 2, userName: 'Luise', msgId: 1, text: 'qweqwqwe', textData: '2', userIcon: null},
-                {userId: 0, userName: 'Alex', msgId: 2, text: 'gfdsgdfs', textData: '3', userIcon: null}
+                {userId: 0, userName: 'Alex', msgId: 0, text: 'Hello', textData: '1', userIcon: null},
+                {userId: 2, userName: 'Luise', msgId: 1, text: 'How are you?', textData: '2', userIcon: null},
+                {userId: 0, userName: 'Alex', msgId: 2, text: 'Fine...', textData: '3', userIcon: null}
             ]
         },
         {
             dialogId: 1,
             dialogUsers: [4, 2],
             msg: [
-                {userId: 4, userName: 'Custom', msgId: 0, text: 'nbvc', textData: '1', userIcon: null}
+                {userId: 4, userName: 'Custom', msgId: 0, text: 'Bye!', textData: '1', userIcon: null}
             ]
         },
         {
             dialogId: 2,
             dialogUsers: [3, 2],
             msg: [
-                {userId: 2, userName: 'Luise', msgId: 0, text: 'ykyu', textData: '1', userIcon: null},
-                {userId: 2, userName: 'Luise', msgId: 1, text: 'rete', textData: '2', userIcon: null},
-                {userId: 3, userName: 'Elise', msgId: 2, text: 'kyu', textData: '3', userIcon: null}
+                {userId: 2, userName: 'Luise', msgId: 0, text: 'When we can meet?', textData: '1', userIcon: null},
+                {userId: 2, userName: 'Luise', msgId: 1, text: 'At five oclock?' , textData: '2', userIcon: null},
+                {userId: 3, userName: 'Elise', msgId: 2, text: 'No problems', textData: '3', userIcon: null}
             ]
         },
 

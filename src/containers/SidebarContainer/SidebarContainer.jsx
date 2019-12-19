@@ -41,18 +41,26 @@ const SidebarContainer = (props) => {
                 }
             </div>
             {props.new_search_value !== ''
-                ? <div className="dialogs">{props.searchResult.map(u => <NavLink to={'/dialogs/' + u.userId}><div className="dialogItem">
-                    {u.lastMsg.userName}
-                    <br/>
-                    {u.lastMsg.text}
-                </div></NavLink>)}</div>
+                ? <div className="dialogs">{props.searchResult.map(u => <NavLink to={'/dialogs/' + u.userId}>
+                    <div className="dialogItem">
+                        {u.lastMsg.userName}
+                        <br/>
+                        <div className="lastMsg">
+                            {u.lastMsg.text}
+                        </div>
+                    </div>
+                </NavLink>)}</div>
                 :
                 <div className="dialogs">
-                    {props.dialogsList.map(d => <NavLink to={'/dialogs/' + d.dialogId}><div className="dialogItem">
-                        {d.lastMsg.userName}
-                        <br/>
-                        {d.lastMsg.text}
-                    </div></NavLink>)}
+                    {props.dialogsList.map(d => <NavLink to={'/dialogs/' + d.dialogId}>
+                        <div className="dialogItem">
+                            {d.lastMsg.userName}
+                            <br/>
+                            <div className="lastMsg">
+                                {d.lastMsg.text}
+                            </div>
+                        </div>
+                    </NavLink>)}
                 </div>
 
             }
@@ -68,4 +76,11 @@ const mapStateToProps = (state) => ({
     searchResult: state.chatReducer.searchResult
 });
 
-export default compose(connect(mapStateToProps, {update_new_pic_value, getNewPicArr, clearSearch, getDialogs, getDialogData, getDialogsListData}), withRouter)(SidebarContainer);
+export default compose(connect(mapStateToProps, {
+    update_new_pic_value,
+    getNewPicArr,
+    clearSearch,
+    getDialogs,
+    getDialogData,
+    getDialogsListData
+}), withRouter)(SidebarContainer);
