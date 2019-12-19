@@ -17,7 +17,6 @@ const SidebarContainer = (props) => {
     useEffect(() => {
         props.getDialogsListData();
         let a = props.msg.length;
-        console.log(a)
     }, [props.msg.length]);
 
     const onNewSearchValue = (e) => {

@@ -9,7 +9,7 @@ const SET_DIALOGS_LIST = 'SET_DIALOGS_LIST'
 
 let initialState = {
     test: '4',
-    activeUser: 2,
+    activeUser: 0,
     new_search_value: '',
     searchResult: [],
     text: '',
