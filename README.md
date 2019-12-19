@@ -1,3 +1,6 @@
+<h1>Chat on React</h1>
+<img src="https://sun9-9.userapi.com/c854120/v854120474/19ed34/aUrZgO4vHyE.jpg" alt="weather-app"/>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
